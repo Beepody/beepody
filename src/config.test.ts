@@ -1,6 +1,6 @@
-import {EPSILON} from './config'
+import {DEFAULT_FREQUENCY, DEFAULT_LENGTH} from './config'
 
-test('Epsilon is reasonable', () => {
-  expect(EPSILON).toBeTruthy()
-  expect(EPSILON).toBeCloseTo(0)
+test('Defaults are reasonable', () => {
+  expect(DEFAULT_FREQUENCY).toBeTruthy()
+  expect(DEFAULT_LENGTH).toBeCloseTo(DEFAULT_LENGTH)
 })

@@ -8,7 +8,8 @@ if (process.argv.length > 2) {
   const script = process.argv.shift()
   void(script)
   const input = process.argv.join(' ')
-  process.stdout.write(beepody.evaluate(input))
+  // process.stdout.write(beepody.evaluate(input))
+  process.stdout.write(input)
 }
 // otherwise, prompt for expressions to evaluate
 else {
@@ -18,7 +19,8 @@ else {
   stdin.setEncoding('utf8')
   process.stdout.write(prompt)
   stdin.on('data', function (result: string) {
-    process.stdout.write(beepody.evaluate(result.trim()))
+    // process.stdout.write(beepody.evaluate(result.trim()))
+    process.stdout.write(result.trim())
     process.stdout.write(prompt)
   })
 }

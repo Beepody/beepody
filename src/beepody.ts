@@ -1,6 +1,6 @@
 import VERSION from './version'
-import Lexer from './Lexer'
-import Parser from './Parser'
+// import Lexer from './Lexer'
+// import Parser from './Parser'
 
 /**
  * @class Beep melody utilities.
@@ -12,12 +12,14 @@ class beepody {
     return VERSION
   }
 
-  static evaluate(expression: string): string {
-    const lexer = new Lexer(expression)
-    const parser = new Parser(lexer.lex())
-    return parser.toString()
-  }
+  // // static evaluate(expression: string): string {
+  // static evaluate(): string {
+  //   // const lexer = new Lexer(expression)
+  //   // const parser = new Parser(lexer.lex())
+  //   // return parser.toString()
+  //   return '?'
+  // }
 }
 
 export default beepody
-export {Beep, parseBeepCommand, parseGrubInitTune} from './Beep'
+// export {Beep, parseBeepCommand, parseGrubInitTune} from './Beep'

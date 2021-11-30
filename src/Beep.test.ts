@@ -7,11 +7,11 @@ test('New Beep is the expected type', () => {
 })
 
 test('Parse a beep command', () => {
-  const a = new Beep('beep -f 392 -l 250 -r 4')
-  expect(a.toString()).toBe('?')
+  const a = parseBeepCommand('beep -f 392 -l 250 -r 4')
+  expect(a.toString()).toBe('Beep(23 200 0)')
 })
 
 test('Parse a GRUB init tune', () => {
-  const a = new Beep('play 600 988 1 1319 4')
-  expect(a.toString()).toBe('?')
+  const a = parseGrubInitTune('play 600 988 1 1319 4')
+  expect(a.toString()).toBe('Beep(21 200 0)')
 })

@@ -5,14 +5,14 @@ import {DEFAULT_LENGTH, DEFAULT_FREQUENCY} from './config'
  * @name Beep
  */
 export class Beep {
-  frequency: Number
-  length: Number
-  repeats: Number
+  frequency: number
+  length: number
+  repeats: number
 
   /**
    * Initialize a beep.
    */
-  constructor(length: number=DEFAULT_LENGTH, frequency: number=DEFAULT_FREQUENCY, repeats: number=1) {
+  constructor(frequency: number=DEFAULT_FREQUENCY, length: number=DEFAULT_LENGTH, repeats=0) {
     this.frequency = frequency
     this.length = length
     this.repeats = repeats
@@ -25,6 +25,14 @@ export class Beep {
     return `Beep(${this.frequency} ${this.length} ${this.repeats})`
   }
 
+}
+
+/**
+ * @class Beep sequence
+ * @name BeepSequence
+ */
+export class BeepSequence {
+  // beeps: Beep[]
 }
 
 /**
