@@ -56,6 +56,7 @@
     "esbuild": "*",
     "eslint": "*",
     "jest": "*",
+    "tone": "*",
     "ts-jest": "*",
     "ts-node": "*",
     "typedoc": "*",

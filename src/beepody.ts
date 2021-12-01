@@ -19,7 +19,8 @@ class beepody {
   //   // return parser.toString()
   //   return '?'
   // }
+
 }
 
 export default beepody
-// export {Beep, parseBeepCommand, parseGrubInitTune} from './Beep'
+export {playDefaultBeep} from './Beep'

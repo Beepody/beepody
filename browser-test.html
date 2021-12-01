@@ -13,59 +13,23 @@
   </head>
   <body>
 
-    <h1>beepody Browser Test</h1>
+    <h1>Beepody Browser Test</h1>
     <p><em>beepody v<span id="version">0.0.0</span></em></p>
 
     <script>
-      const tests = {}
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('version').innerText = beepody.version
+      playDefaultBeep()
+    })
+
+    const beep = () => {
+      playDefaultBeep()
+    }
+
     </script>
 
-    <h2>Beepody</h2>
-
-    <h3>Create and Reduce</h3>
-    <pre id="rat-init" class="output"></pre>
-    <script>
-      tests['rat-init'] = () => {
-        const out = []
-        const n = 6, d = 9
-        const r = new Beepody(n, d)
-        out.push(`new Beepody(${n}, ${d})`)
-        out.push('')
-        out.push(`toString: ${r}`)
-        out.push(`valueOf: ${+r}`)
-        return out
-      }
-    </script>
-
-    <h3>Multiply</h3>
-    <pre id="rat-mul" class="output"></pre>
-    <script>
-      tests['rat-mul'] = () => {
-        const out = []
-        const n1 = 71, d1 = 7
-        const n2 = 35, d2 = 113
-        out.push(`a = new Beepody(${n1}, ${d1})`)
-        const a = new Beepody(n1, d1)
-        out.push(`b = new Beepody(${n2}, ${d2})`)
-        const b = new Beepody(n2, d2)
-        out.push(`c = a.mul(b)`)
-        const c = a.mul(b)
-        out.push('')
-        out.push(`toString: ${c}`)
-        out.push(`valueOf: ${+c}`)
-        return out
-      }
-    </script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('version').innerText = beepody.version
-        for (const [id, test] of Object.entries(tests)) {
-          const out = document.getElementById(id)
-          out.innerHTML = test().join('\n')
-        }
-      })
-    </script>
+    <button onClick="beep()">beep()</button>
 
   </body>
 </html>

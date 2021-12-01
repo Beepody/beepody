@@ -1,4 +1,4 @@
-import beepody from './beepody'
+import beepody, {playDefaultBeep} from './beepody'
 
 test('Version matches semver format', () => {
   // @from https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
@@ -9,3 +9,8 @@ test('Version matches semver format', () => {
 // test('Evaluate', () => {
 //   expect(beepody.evaluate()).toEqual(expect.stringMatching('?'))
 // })
+
+test('Beep', () => {
+  expect(playDefaultBeep()).toBeUndefined()
+})
+
