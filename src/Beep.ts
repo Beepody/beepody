@@ -49,26 +49,24 @@ export class BeepSequence {
  */
 export const playBeepSequence = (bs: BeepSequence): void => {
   const out = new Tone.Oscillator(DEFAULT_FREQUENCY, 'square').toDestination()
-  
+  let t = 0
+  Tone.Transport.stop() 
   for (const beep of bs.beeps) {
-    // out.frequency = beep.frequency
-    // const butt = Tone.Frequency(38, "midi").toFrequency()
-    console.log(beep)
-    // synth.triggerAttackRelease('C4', '8n')
+    Tone.Transport.scheduleOnce((time) => {
+      out.frequency.value = beep.frequency
+      const length = beep.length/1000
+      const start = time + t
+      const end = start + length
+      out.start(start).stop(end)
+      t += length
+      console.log(out.frequency.value, length, start, end, t)
+    }, '8n')
   }
-
-  // beep!
-  out.start()
-  setTimeout(
-    () => {
-      out.stop()
-    },
-    169
-  )
+  Tone.Transport.start()
 }
 
 /**
-    * Play the default beep.
+ * Play the default beep.
  */
 export const playDefaultBeep = (): void => {
   playBeepSequence(new BeepSequence([new Beep()]))

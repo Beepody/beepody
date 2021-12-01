@@ -26,9 +26,20 @@
       playDefaultBeep()
     }
 
+    const coin = () => {
+      const seq = new BeepSequence([
+        new Beep(220, 100),
+        new Beep(420, 200),
+        new Beep(666, 123, 3),
+      ])
+      playBeepSequence(seq)
+    }
+
     </script>
 
     <button onClick="beep()">beep()</button>
+
+    <button onClick="coin()">coin()</button>
 
   </body>
 </html>

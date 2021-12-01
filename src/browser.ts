@@ -6,7 +6,7 @@ import beepody from './beepody'
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 (window as any).beepody = beepody
 
-import {playDefaultBeep} from './Beep'
+import {BeepSequence, Beep, playBeepSequence, playDefaultBeep} from './Beep'
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 // (window as any).Beep = Beep;
 // // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
@@ -16,7 +16,13 @@ import {playDefaultBeep} from './Beep'
 // // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 // (window as any).playBeepSequence = playBeepSequence;
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+(window as any).BeepSequence = BeepSequence;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+(window as any).Beep = Beep;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+(window as any).playBeepSequence = playBeepSequence;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 (window as any).playDefaultBeep = playDefaultBeep // no semicolon on last
 
 export default beepody
-export {playDefaultBeep} from './Beep'
+export {playBeepSequence, playDefaultBeep} from './Beep'
