@@ -1,5 +1,5 @@
 import {DEFAULT_LENGTH, DEFAULT_FREQUENCY} from './config'
-// import * as Tone from 'tone'
+import * as Tone from 'tone'
 
 /**
  * @class Beep utility
@@ -48,16 +48,27 @@ export class BeepSequence {
  * Play a beep sequence to the browser audio.
  */
 export const playBeepSequence = (bs: BeepSequence): void => {
-  console.log('beep this:', bs)
-  //create a synth and connect it to the main output (your speakers)
-  // const synth = new Tone.Synth().toDestination()
-  //play a middle 'C' for the duration of an 8th note
-  // synth.triggerAttackRelease('C4', '8n')
-  // console.log(synth)
+  const out = new Tone.Oscillator(DEFAULT_FREQUENCY, 'square').toDestination()
+  
+  for (const beep of bs.beeps) {
+    // out.frequency = beep.frequency
+    // const butt = Tone.Frequency(38, "midi").toFrequency()
+    console.log(beep)
+    // synth.triggerAttackRelease('C4', '8n')
+  }
+
+  // beep!
+  out.start()
+  setTimeout(
+    () => {
+      out.stop()
+    },
+    169
+  )
 }
 
 /**
- * Play the default beep.
+    * Play the default beep.
  */
 export const playDefaultBeep = (): void => {
   playBeepSequence(new BeepSequence([new Beep()]))
