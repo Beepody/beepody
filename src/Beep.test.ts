@@ -1,14 +1,9 @@
-import Beep, {parseBeepCommand, parseGrubInitTune, playDefaultBeep} from './Beep'
+import Beep, {parseBeepCommand, parseGrubInitTune} from './Beep'
 
 test('New Beep is the expected type', () => {
   const a = new Beep()
   expect(typeof a).toBe('object')
   expect(a.constructor.name).toBe('Beep')
-})
-
-test('Play default beep sequence', () => {
-  const t = playDefaultBeep()
-  expect(t).toBeUndefined()
 })
 
 test('Parse a beep command', () => {

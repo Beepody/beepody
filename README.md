@@ -13,7 +13,7 @@ Beep melody utilities for JavaScript.
 
 ## Demo
 
-[CodePen Demo](https://codepen.io/beepody/pen/@todo)
+[CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
 
 
 ## Install
@@ -70,7 +70,7 @@ beep.toBeepCommand
 <script>beepody.beep()</script>
 ```
 
-[CodePen Demo](https://codepen.io/beepody/@todo)
+[CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
 
 ### Command Line Interface
 

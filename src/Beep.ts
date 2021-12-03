@@ -47,22 +47,23 @@ export class BeepSequence {
 /**
  * Play a beep sequence to the browser audio.
  */
+/* istanbul ignore next */ // Ignored from tests because AudioBuffer is not available in testing
 export const playBeepSequence = (bs: BeepSequence): void => {
-  const out = new Tone.Oscillator(DEFAULT_FREQUENCY, 'square').toDestination()
-  let t = 0
-  Tone.Transport.stop() 
+  if (typeof window === 'undefined') return
+  const synth = new Tone.Synth({
+    oscillator : {
+      type : 'square'
+    }
+  }).toDestination()
+  synth.volume.value = -6
+  let time = Tone.now()
+  console.log(time)
   for (const beep of bs.beeps) {
-    Tone.Transport.scheduleOnce((time) => {
-      out.frequency.value = beep.frequency
-      const length = beep.length/1000
-      const start = time + t
-      const end = start + length
-      out.start(start).stop(end)
-      t += length
-      console.log(out.frequency.value, length, start, end, t)
-    }, '8n')
+    const seconds = beep.length * .001
+    console.log(beep.frequency, seconds, time)
+    synth.triggerAttackRelease(beep.frequency, seconds, time)
+    time += seconds
   }
-  Tone.Transport.start()
 }
 
 /**
