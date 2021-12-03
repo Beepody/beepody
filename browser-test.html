@@ -34,11 +34,32 @@
       playBeepSequence(seq)
     }
 
+    const scale = () => {
+      const seq = new BeepSequence([
+        new Beep(220, 100),
+        new Beep(246, 100),
+        new Beep(277, 100),
+        new Beep(293, 100),
+        new Beep(329, 100),
+        new Beep(369, 100),
+        new Beep(415, 100),
+        new Beep(440, 100),
+        new Beep(415, 100),
+        new Beep(369, 100),
+        new Beep(329, 100),
+        new Beep(293, 100),
+        new Beep(277, 100),
+        new Beep(246, 100),
+        new Beep(220, 500)
+      ])
+      playBeepSequence(seq)
+    }
+
     </script>
 
     <button onClick="beep()">beep()</button>
-
     <button onClick="coin()">coin()</button>
+    <button onClick="scale()">scale()</button>
 
   </body>
 </html>
