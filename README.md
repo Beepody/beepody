@@ -107,20 +107,20 @@ beepody> 392 250 4
 
 ## Feedback
 
-* Please report bug and feature requests as [GitHub Issues](https://github.com/beepody/beepody/issues)
+* Please report bug and feature requests as [GitHub Issues](https://github.com/Beepody/beepody/issues)
 
 [npm-image]: https://img.shields.io/npm/v/beepody.svg
 [npm-url]: https://npmjs.org/package/beepody
 [downloads-image]: https://img.shields.io/npm/dm/beepody.svg
 [downloads-url]: https://npmjs.org/package/beepody
-[build-image]: https://github.com/beepody/beepody/workflows/Test/badge.svg
-[build-url]: https://github.com/beepody/beepody/actions?query=workflow%2ATest
+[build-image]: https://github.com/Beepody/beepody/workflows/Test/badge.svg
+[build-url]: https://github.com/Beepody/beepody/actions?query=workflow%2ATest
 [size-image]: https://badgen.net/bundlephobia/min/beepody
 [size-url]: https://bundlephobia.com/result?p=beepody
-[coverage-image]: https://scrutinizer-ci.com/g/beepody/beepody/badges/coverage.png?b=main
-[coverage-url]: https://scrutinizer-ci.com/g/beepody/beepody/?branch=main
-[scrutinizer-image]: https://scrutinizer-ci.com/g/beepody/beepody/badges/quality-score.png?b=main
-[scrutinizer-url]: https://scrutinizer-ci.com/g/beepody/beepody/?branch=main
-[lgtm-image]: https://img.shields.io/lgtm/alerts/g/beepody/beepody.svg
-[lgtm-url]: https://lgtm.com/projects/g/beepody/beepody/
+[coverage-image]: https://scrutinizer-ci.com/g/Beepody/beepody/badges/coverage.png?b=main
+[coverage-url]: https://scrutinizer-ci.com/g/Beepody/beepody/?branch=main
+[scrutinizer-image]: https://scrutinizer-ci.com/g/Beepody/beepody/badges/quality-score.png?b=main
+[scrutinizer-url]: https://scrutinizer-ci.com/g/Beepody/beepody/?branch=main
+[lgtm-image]: https://img.shields.io/lgtm/alerts/g/Beepody/beepody.svg
+[lgtm-url]: https://lgtm.com/projects/g/Beepody/beepody/
 [license-image]: https://img.shields.io/npm/l/beepody.svg

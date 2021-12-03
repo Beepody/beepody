@@ -57,10 +57,8 @@ export const playBeepSequence = (bs: BeepSequence): void => {
   }).toDestination()
   synth.volume.value = -6
   let time = Tone.now()
-  console.log(time)
   for (const beep of bs.beeps) {
     const seconds = beep.length * .001
-    console.log(beep.frequency, seconds, time)
     synth.triggerAttackRelease(beep.frequency, seconds, time)
     time += seconds
   }
