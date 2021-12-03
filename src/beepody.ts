@@ -23,4 +23,4 @@ class beepody {
 }
 
 export default beepody
-export {playDefaultBeep} from './Beep'
+export * from './Beep'
