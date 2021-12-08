@@ -56,13 +56,13 @@
     "esbuild": "*",
     "eslint": "*",
     "jest": "*",
-    "tone": "*",
     "ts-jest": "*",
     "ts-node": "*",
     "typedoc": "*",
     "typescript": "*"
   },
   "dependencies": {
+    "tone": "*",
     "tslib": "*"
   }
 }
