@@ -62,7 +62,6 @@
     "typescript": "*"
   },
   "dependencies": {
-    "tone": "*",
     "tslib": "*"
   }
 }

@@ -1,5 +1,5 @@
 import {DEFAULT_LENGTH, DEFAULT_FREQUENCY} from './config'
-import * as Tone from 'tone'
+import Tone from './Tone'
 
 /**
  * @class Beep utility
@@ -47,20 +47,15 @@ export class BeepSequence {
 /**
  * Play a beep sequence to the browser audio.
  */
-/* istanbul ignore next */ // Ignored from tests because AudioBuffer is not available in testing
+/* istanbul ignore next */
 export const playBeepSequence = (bs: BeepSequence): void => {
   if (typeof window === 'undefined') return
-  const synth = new Tone.Synth({
-    oscillator : {
-      type : 'square'
-    }
-  }).toDestination()
-  synth.volume.value = -6
-  let time = Tone.now()
+  let wait = 0
+  const tone = new Tone()
   for (const beep of bs.beeps) {
     const seconds = beep.length * .001
-    synth.triggerAttackRelease(beep.frequency, seconds, time)
-    time += seconds
+    tone.beepOnBeepOff(beep.frequency, seconds, wait)
+    wait += seconds
   }
 }
 
