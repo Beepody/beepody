@@ -1,4 +1,3 @@
-// import {DEFAULT_LENGTH, DEFAULT_FREQUENCY} from './config'
 
 /**
  * @class Tone player

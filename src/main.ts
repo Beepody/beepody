@@ -9,4 +9,3 @@ module.exports = {
 }
 
 export default beepody
-export * from './beepody'
