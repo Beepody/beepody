@@ -9,3 +9,4 @@ module.exports = {
 }
 
 export default beepody
+export {Beep, BeepSequence, playBeepSequence, playDefaultBeep}

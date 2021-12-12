@@ -29,6 +29,7 @@
   "bin": {
     "beepody": "./dist/esbuild/cli.js"
   },
+  "type": "commonjs",
   "scripts": {
     "dev": "yarn test --watch",
     "cli": "ts-node src/cli.ts",
