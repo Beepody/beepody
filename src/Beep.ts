@@ -47,7 +47,7 @@ export class BeepSequence {
    * Each note is "frequency (Hz), length (ms), repeats" separated by "|", with defaults (440 200 1).
    * Notes are separated by ",".
    */
-   toHash(): string {
+  toHash(): string {
     const notes: string[] = []
     for (const beep of this.beeps) {
       notes.push(`${beep.frequency}${PARAMETER_DELIMITER}${beep.length}`)
@@ -58,12 +58,12 @@ export class BeepSequence {
   /**
    * Return the `beep` command.
    */
-   toBeepCommand(): string {
+  toBeepCommand(): string {
     const notes: string[] = []
     for (const beep of this.beeps) {
       notes.push(`-f ${beep.frequency} -l ${beep.length}`)
     }
-    return `beep ${notes.join(' ')}`
+    return `beep ${notes.join(' -n ')}`
   }
 
   /**
@@ -80,7 +80,7 @@ export class BeepSequence {
   /**
    * The text representation.
    */
-   toString(): string {
+  toString(): string {
     return `${this.constructor.name}(${this.toHash()})`
   }
 

@@ -16,7 +16,7 @@ test('Format a beep command', () => {
     new Beep(988, 100),
     new Beep(1319, 400)
   ])
-  expect(bs.toBeepCommand()).toBe('beep -f 988 -l 100 -f 1319 -l 400')
+  expect(bs.toBeepCommand()).toBe('beep -f 988 -l 100 -n -f 1319 -l 400')
 })
 
 test('Parse a GRUB init tune', () => {
@@ -37,5 +37,13 @@ test('Hash a beep sequence', () => {
     new Beep(988, 100),
     new Beep(1319, 400)
   ])
-  expect(bs.toHash()).toBe('988|100,1319|400')
+  expect(bs.toHash()).toBe('988^100|1319^400')
+})
+
+test('Beep sequence as string', () => {
+  const bs = new BeepSequence([
+    new Beep(988, 100),
+    new Beep(1319, 400)
+  ])
+  expect(bs.toString()).toBe('BeepSequence(988^100|1319^400)')
 })

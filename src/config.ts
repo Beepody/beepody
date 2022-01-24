@@ -11,9 +11,9 @@ export const DEFAULT_LENGTH = 200
 /**
  * Character to separate notes in beep sequence URL hash.
  */
- export const NOTE_DELIMITER = ','
+export const NOTE_DELIMITER = '|'
 
 /**
  * Character to separate parameters in notes in beep sequence URL hash.
  */
- export const PARAMETER_DELIMITER = '|'
+export const PARAMETER_DELIMITER = '^'
