@@ -1,4 +1,4 @@
-import {DEFAULT_LENGTH, DEFAULT_FREQUENCY} from './config'
+import {DEFAULT_LENGTH, DEFAULT_FREQUENCY, NOTE_DELIMITER, PARAMETER_DELIMITER} from './config'
 import Tone from './Tone'
 
 /**
@@ -42,6 +42,48 @@ export class BeepSequence {
     this.beeps = beeps
   }
 
+  /**
+   * Return the URL hash for the sequence.
+   * Each note is "frequency (Hz), length (ms), repeats" separated by "|", with defaults (440 200 1).
+   * Notes are separated by ",".
+   */
+   toHash(): string {
+    const notes: string[] = []
+    for (const beep of this.beeps) {
+      notes.push(`${beep.frequency}${PARAMETER_DELIMITER}${beep.length}`)
+    }
+    return notes.join(NOTE_DELIMITER)
+  }
+
+  /**
+   * Return the `beep` command.
+   */
+   toBeepCommand(): string {
+    const notes: string[] = []
+    for (const beep of this.beeps) {
+      notes.push(`-f ${beep.frequency} -l ${beep.length}`)
+    }
+    return `beep ${notes.join(' ')}`
+  }
+
+  /**
+   * Return the GRUB init tune.
+   */
+  toGRUBInitTune(): string {
+    const notes: string[] = []
+    for (const beep of this.beeps) {
+      notes.push(`${beep.frequency} ${beep.length*.01}`)
+    }
+    return `play ${notes.join(' ')}`
+  }
+
+  /**
+   * The text representation.
+   */
+   toString(): string {
+    return `${this.constructor.name}(${this.toHash()})`
+  }
+
 }
 
 /**
@@ -76,7 +118,7 @@ export const parseBeepCommand = (s: string): Beep => {
 /**
  * Parse a Grub init tune "play" line.
  */
-export const parseGrubInitTune = (s: string): Beep => {
+export const parseGRUBInitTune = (s: string): Beep => {
   return new Beep(s.length)
 }
 

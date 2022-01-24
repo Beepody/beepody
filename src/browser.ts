@@ -12,7 +12,7 @@ import {BeepSequence, Beep, playBeepSequence, playDefaultBeep} from './Beep'
 // // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 // (window as any).parseBeepCommand = parseBeepCommand;
 // // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-// (window as any).parseGrubInitTune = parseGrubInitTune;
+// (window as any).parseGRUBInitTune = parseGRUBInitTune;
 // // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 // (window as any).playBeepSequence = playBeepSequence;
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any

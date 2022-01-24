@@ -1,4 +1,4 @@
-import Beep, {parseBeepCommand, parseGrubInitTune} from './Beep'
+import Beep, {BeepSequence, parseBeepCommand, parseGRUBInitTune} from './Beep'
 
 test('New Beep is the expected type', () => {
   const a = new Beep()
@@ -11,7 +11,31 @@ test('Parse a beep command', () => {
   expect(a.toString()).toBe('Beep(23 200 0)')
 })
 
+test('Format a beep command', () => {
+  const bs = new BeepSequence([
+    new Beep(988, 100),
+    new Beep(1319, 400)
+  ])
+  expect(bs.toBeepCommand()).toBe('beep -f 988 -l 100 -f 1319 -l 400')
+})
+
 test('Parse a GRUB init tune', () => {
-  const a = parseGrubInitTune('play 600 988 1 1319 4')
+  const a = parseGRUBInitTune('play 600 988 1 1319 4')
   expect(a.toString()).toBe('Beep(21 200 0)')
+})
+
+test('Format a GRUB init tune', () => {
+  const bs = new BeepSequence([
+    new Beep(988, 100),
+    new Beep(1319, 400)
+  ])
+  expect(bs.toGRUBInitTune()).toBe('play 988 1 1319 4')
+})
+
+test('Hash a beep sequence', () => {
+  const bs = new BeepSequence([
+    new Beep(988, 100),
+    new Beep(1319, 400)
+  ])
+  expect(bs.toHash()).toBe('988|100,1319|400')
 })
