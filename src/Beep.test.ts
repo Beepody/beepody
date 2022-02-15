@@ -47,3 +47,18 @@ test('Beep sequence as string', () => {
   ])
   expect(bs.toString()).toBe('BeepSequence(988^100|1319^400)')
 })
+
+test('Beep sequence length in seconds', () => {
+  const bs = new BeepSequence([
+    new Beep(988, 100),
+    new Beep(1319, 400)
+  ])
+  expect(bs.lengthInSeconds()).toBe(.5)
+})
+
+test('Beep sequence as GRUB tune returns frequency like "9.87", not "9.870000000000001"', () => {
+  const bs = new BeepSequence([
+    new Beep(55, 987)
+  ])
+  expect(bs.toGRUBInitTune()).toBe('play 55 9.87')
+})

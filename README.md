@@ -66,8 +66,8 @@ beep.toBeepCommand
 ### Script Tags
 
 ```html
-<script src="https://unpkg.com/beepody"></script>
-<script>beepody.beep()</script>
+<script src="//unpkg.com/beepody"></script>
+<button onClick="playDefaultBeep()">beep</button>
 ```
 
 [CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
@@ -107,7 +107,7 @@ beepody> 392 250 4
 
 ## Feedback
 
-* Please report bug and feature requests as [GitHub Issues](https://github.com/Beepody/beepody/issues)
+* Report bug and feature requests as [GitHub Issues](https://github.com/Beepody/beepody/issues)
 
 [npm-image]: https://img.shields.io/npm/v/beepody.svg
 [npm-url]: https://npmjs.org/package/beepody

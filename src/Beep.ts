@@ -72,7 +72,7 @@ export class BeepSequence {
   toGRUBInitTune(): string {
     const notes: string[] = []
     for (const beep of this.beeps) {
-      notes.push(`${beep.frequency} ${beep.length*.01}`)
+      notes.push(`${beep.frequency} ${beep.length/100}`)
     }
     return `play ${notes.join(' ')}`
   }
@@ -82,6 +82,19 @@ export class BeepSequence {
    */
   toString(): string {
     return `${this.constructor.name}(${this.toHash()})`
+  }
+
+  /**
+   * The length of the playtime in seconds.
+   */
+  lengthInSeconds(): number {
+    let s = 0
+    for (const beep of this.beeps) {
+      for (let r=-1; r<beep.repeats; r++) {
+        s += beep.length
+      }
+    }
+    return s * .001
   }
 
 }
