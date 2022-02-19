@@ -236,4 +236,17 @@ export const parseGRUBInitTune = (s: string): BeepSequence => {
   return sequence
 }
 
+/**
+ * Parse a beep sequence hash.
+ */
+export const parseBeepHash = (s: string): BeepSequence => {
+  const sequence = new BeepSequence([])
+  for (const note of s.split(NOTE_DELIMITER)) {
+    const params = note.split(PARAMETER_DELIMITER).map((s: string) => parseFloat(s))
+    const beep = new Beep(...params)
+    sequence.beeps.push(beep)
+  }
+  return sequence
+}
+
 export default Beep

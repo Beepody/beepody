@@ -1,4 +1,4 @@
-import Beep, {BeepSequence, parseBeepCommand, parseGRUBInitTune} from './Beep'
+import Beep, {BeepSequence, parseBeepCommand, parseBeepHash, parseGRUBInitTune} from './Beep'
 
 test('New Beep is the expected type', () => {
   const a = new Beep()
@@ -56,6 +56,12 @@ test('Hash a beep sequence', () => {
     new Beep(1319, 400)
   ])
   expect(bs.toHash()).toBe('988^100|1319^400')
+})
+
+test('Parse a beep sequence hash', () => {
+  const hash = '2^200|2^200|22^2300|3^200|3122^3300|12^300'
+  const bs = parseBeepHash(hash)
+  expect(bs.toHash()).toBe(hash)
 })
 
 test('Beep sequence as string', () => {
