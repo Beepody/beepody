@@ -34,7 +34,7 @@ export class Beep {
  */
 export class BeepSequence {
   beeps: Beep[]
-  tempo: Number
+  tempo: number
 
   /**
    * Initialize a beep sequence.
@@ -77,10 +77,12 @@ export class BeepSequence {
    */
   toGRUBInitTune(): string {
     const notes: string[] = []
+    let s = `play ${this.tempo}`
     for (const beep of this.beeps) {
       notes.push(`${beep.frequency} ${beep.length/100}`)
     }
-    return `play ${this.tempo} ${notes.join(' ')}`
+    if (notes.length) s += ` ${notes.join(' ')}`
+    return s
   }
 
   /**
@@ -148,23 +150,23 @@ export const parseBeepCommand = (s: string): BeepSequence => {
   let beep = new Beep()
   const processOption = (name: string, value: string): void => {
     switch (name) {
-      case 'frequency':
-        beep.frequency = parseFloat(value)
-        break
-      case 'length':
-        beep.length = parseFloat(value)
-        break
-      case 'repeats':
-        beep.repeats = parseInt(value, 10)
-        break
+    case 'frequency':
+      beep.frequency = parseFloat(value)
+      break
+    case 'length':
+      beep.length = parseFloat(value)
+      break
+    case 'repeats':
+      beep.repeats = parseInt(value, 10)
+      break
     }
   }
   const processCommand = (name: string): void => {
     switch (name) {
-      case 'new':
-        sequence.beeps.push(beep)
-        beep = new Beep()
-        break
+    case 'new':
+      sequence.beeps.push(beep)
+      beep = new Beep()
+      break
     }
   }
   let option
@@ -202,9 +204,6 @@ export const parseBeepCommand = (s: string): BeepSequence => {
     else {
       if (option) {
         processOption(option, arg)
-      }
-      else {
-        console.error(`Undefined argument "${arg}"`)
       }
     }
   }

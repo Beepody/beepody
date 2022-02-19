@@ -6,6 +6,10 @@ test('New Beep is the expected type', () => {
   expect(a.constructor.name).toBe('Beep')
 })
 
+test('Beep 2 string', () => {
+  expect((new Beep()).toString()).toBe('Beep(440 200 1)')
+})
+
 test('Format a beep command', () => {
   const bs = new BeepSequence([
     new Beep(988, 100),
@@ -15,9 +19,15 @@ test('Format a beep command', () => {
 })
 
 test('Parse a beep command', () => {
-  const input = 'beep -f 392 -l 250 -r 4'
+  const input = 'beep -f 392 -l 250 -r 4 -n -f 100 -l 100 -r 3'
   const a = parseBeepCommand(input)
   expect(a.toBeepCommand()).toBe(input)
+})
+
+test('Parse a long beep command', () => {
+  const input = 'beep --frequency 392 --length 250 --repeats 4 --new --frequency 100 --length 100 --repeats 3'
+  const a = parseBeepCommand(input)
+  expect(a.toBeepCommand()).toBe('beep -f 392 -l 250 -r 4 -n -f 100 -l 100 -r 3')
 })
 
 test('Format a GRUB init tune', () => {
@@ -32,6 +42,12 @@ test('Parse a GRUB init tune', () => {
   const input = 'play 600 988 1 1319 4'
   const a = parseGRUBInitTune(input)
   expect(a.toGRUBInitTune()).toBe(input)
+})
+
+test('Parse an empty GRUB init tune', () => {
+  const input = 'play'
+  const a = parseGRUBInitTune(input)
+  expect(a.toGRUBInitTune()).toBe('play 60')
 })
 
 test('Hash a beep sequence', () => {
