@@ -13,7 +13,7 @@ export class Beep {
   /**
    * Initialize a beep.
    */
-  constructor(frequency: number=DEFAULT_FREQUENCY, length: number=DEFAULT_LENGTH, repeats=0) {
+  constructor(frequency: number=DEFAULT_FREQUENCY, length: number=DEFAULT_LENGTH, repeats=1) {
     this.frequency = frequency
     this.length = length
     this.repeats = repeats
@@ -34,12 +34,14 @@ export class Beep {
  */
 export class BeepSequence {
   beeps: Beep[]
+  tempo: Number
 
   /**
    * Initialize a beep sequence.
    */
   constructor(beeps: Beep[]) {
     this.beeps = beeps
+    this.tempo = 600
   }
 
   /**
@@ -61,7 +63,11 @@ export class BeepSequence {
   toBeepCommand(): string {
     const notes: string[] = []
     for (const beep of this.beeps) {
-      notes.push(`-f ${beep.frequency} -l ${beep.length}`)
+      let s = `-f ${beep.frequency} -l ${beep.length}`
+      if (beep.repeats !== 1) {
+        s += ` -r ${beep.repeats}`
+      }
+      notes.push(s)
     }
     return `beep ${notes.join(' -n ')}`
   }
@@ -74,7 +80,7 @@ export class BeepSequence {
     for (const beep of this.beeps) {
       notes.push(`${beep.frequency} ${beep.length/100}`)
     }
-    return `play ${notes.join(' ')}`
+    return `play ${this.tempo} ${notes.join(' ')}`
   }
 
   /**
@@ -121,18 +127,114 @@ export const playDefaultBeep = (): void => {
   playBeepSequence(new BeepSequence([new Beep()]))
 }
 
+const BEEP_OPTIONS = [
+  ['f', 'frequency', 'FREQ'],
+  ['l', 'length', 'LEN'],
+  ['r', 'repeats', 'REPEATS'],
+  ['d', 'delay', 'DELAY'],
+]
+
+const BEEP_COMMANDS = [
+  ['n', 'new', 'NEW'],
+]
+
 /**
  * Parse a Linux "beep" command.
  */
-export const parseBeepCommand = (s: string): Beep => {
-  return new Beep(s.length)
+export const parseBeepCommand = (s: string): BeepSequence => {
+  const sequence = new BeepSequence([])
+  const args = s.split(/\s+/)
+  console.assert(args.shift() === 'beep')
+  let beep = new Beep()
+  const processOption = (name: string, value: string): void => {
+    switch (name) {
+      case 'frequency':
+        beep.frequency = parseFloat(value)
+        break
+      case 'length':
+        beep.length = parseFloat(value)
+        break
+      case 'repeats':
+        beep.repeats = parseInt(value, 10)
+        break
+    }
+  }
+  const processCommand = (name: string): void => {
+    switch (name) {
+      case 'new':
+        sequence.beeps.push(beep)
+        beep = new Beep()
+        break
+    }
+  }
+  let option
+  for (const arg of args) {
+    if (arg[0] === '-') {
+      if (arg[1] === '-') {
+        // # eg: --frequency
+        const name = arg.substring(2)
+        for (const opt of BEEP_OPTIONS) {
+          if (opt[1] === name) {
+            option = opt[1]
+          }
+        }
+        for (const opt of BEEP_COMMANDS) {
+          if (opt[1] === name) {
+            processCommand(opt[1])
+          }
+        }
+      }
+      else {
+        // # eg: -f
+        const letter = arg[1]
+        for (const opt of BEEP_OPTIONS) {
+          if (opt[0] === letter) {
+            option = opt[1]
+          }
+        }
+        for (const opt of BEEP_COMMANDS) {
+          if (opt[0] === letter) {
+            processCommand(opt[1])
+          }
+        }
+      }
+    }
+    else {
+      if (option) {
+        processOption(option, arg)
+      }
+      else {
+        console.error(`Undefined argument "${arg}"`)
+      }
+    }
+  }
+  sequence.beeps.push(beep)
+  return sequence
 }
 
 /**
  * Parse a Grub init tune "play" line.
  */
-export const parseGRUBInitTune = (s: string): Beep => {
-  return new Beep(s.length)
+export const parseGRUBInitTune = (s: string): BeepSequence => {
+  const sequence = new BeepSequence([])
+  const args = s.split(/\s+/)
+  console.assert(args.shift() === 'play')
+  sequence.tempo = parseFloat(args.shift()||'60')
+  let pitch
+  for (const arg of args) {
+    if (pitch) {
+      const duration = parseFloat(arg) * 100
+      const beep = new Beep()
+      beep.frequency = pitch
+      beep.length = duration
+      sequence.beeps.push(beep)
+      pitch = null
+    }
+    else {
+      pitch = parseFloat(arg)
+    }
+  }
+  return sequence
 }
 
 export default Beep
