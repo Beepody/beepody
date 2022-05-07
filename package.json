@@ -65,7 +65,7 @@
     "test": "jest",
     "dev": "yarn test --watch",
     "lint": "eslint \"*/**/*.{ts,js,json}\"",
-    "prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
+    "x-prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
     "build": "rollup --config ./rollup.config.js",
     "prepublish": "yarn doc && yarn lint && yarn test --coverage && yarn build",
     "example": "node example.js"
