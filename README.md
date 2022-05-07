@@ -69,7 +69,9 @@ beep.toBeepCommand
 <button onClick="beepody.playDefaultBeep()">beep</button>
 ```
 
-[CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
+#### In Your Browser
+
+[Try with RunKit](https://npm.runkit.com/beepody)
 
 ### Command Line Interface
 
@@ -82,13 +84,9 @@ beepody> 392 250 4
 (beeps?)
 ```
 
-#### In Your Browser
-
-[Try with RunKit](https://npm.runkit.com/beepody)
-
 ## Read the Docs
 
-[Documentation](https://beepody.github.io/beepody/)
+[Documentation](http://docs.beepody.com/)
 
 ## CLI Commands
 
