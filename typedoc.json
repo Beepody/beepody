@@ -1,7 +1,5 @@
 {
   "out": "./docs",
   "name": "beepody",
-  "theme": "markdown",
-  "readme": "./README.md",
   "tsconfig": "./tsconfig.bundle.json"
 }

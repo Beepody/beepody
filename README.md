@@ -1,5 +1,6 @@
-# [beepody]
+# beepody
 
+Beep melody utilities for JavaScript.
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
@@ -9,8 +10,6 @@
 [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]
 [![Language Grade][lgtm-image]][lgtm-url]
 [![GPL 3.0][license-image]](LICENSE)
-
-Beep melody utilities for JavaScript.
 
 ## Demo
 
