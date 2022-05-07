@@ -1,6 +1,6 @@
 {
   "name": "beepody",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Beep melody utilities.",
   "license": "GPL-3.0",
   "keywords": [
@@ -65,9 +65,9 @@
     "test": "jest",
     "dev": "yarn test --watch",
     "lint": "eslint \"*/**/*.{ts,js,json}\"",
-    "x-prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
+    "prebuild": "echo \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
     "build": "rollup --config ./rollup.config.js",
-    "prepublish": "yarn x-prebuild && yarn doc && yarn lint && yarn test --coverage && yarn build",
+    "prepublish": "yarn prebuild && yarn doc && yarn lint && yarn test --coverage && yarn build",
     "demo": "node demo.js"
   }
 }
