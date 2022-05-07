@@ -103,6 +103,10 @@ beepody> 392 250 4
 
 * Report bug and feature requests as [GitHub Issues](https://github.com/Beepody/beepody/issues)
 
+## Sponsorship
+
+* [Sponsor Beepody](https://github.com/sponsors/Beepody)
+
 [npm-image]: https://img.shields.io/npm/v/beepody.svg
 [npm-url]: https://npmjs.org/package/beepody
 [downloads-image]: https://img.shields.io/npm/dm/beepody.svg
