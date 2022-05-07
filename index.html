@@ -1,0 +1,85 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>beepody</title><meta name="description" content="Documentation for beepody"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">beepody</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>beepody </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#beepody" id="beepody" style="color: inherit; text-decoration: none;">
+  <h1>beepody</h1>
+</a>
+<p>Beep melody utilities for JavaScript.</p>
+<p><a href="https://npmjs.org/package/beepody"><img src="https://img.shields.io/npm/v/beepody.svg" alt="NPM Version"></a>
+<a href="https://npmjs.org/package/beepody"><img src="https://img.shields.io/npm/dm/beepody.svg" alt="NPM Downloads"></a>
+<a href="https://github.com/Beepody/beepody/actions?query=workflow%2ATest"><img src="https://github.com/Beepody/beepody/workflows/Test/badge.svg" alt="Build Status"></a>
+<a href="https://bundlephobia.com/result?p=beepody"><img src="https://badgen.net/bundlephobia/min/beepody" alt="Build Size"></a>
+<a href="https://scrutinizer-ci.com/g/Beepody/beepody/?branch=main"><img src="https://scrutinizer-ci.com/g/Beepody/beepody/badges/coverage.png?b=main" alt="Code Coverage"></a>
+<a href="https://scrutinizer-ci.com/g/Beepody/beepody/?branch=main"><img src="https://scrutinizer-ci.com/g/Beepody/beepody/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a>
+<a href="https://lgtm.com/projects/g/Beepody/beepody/"><img src="https://img.shields.io/lgtm/alerts/g/Beepody/beepody.svg" alt="Language Grade"></a>
+<a href="LICENSE"><img src="https://img.shields.io/npm/l/beepody.svg" alt="GPL 3.0"></a></p>
+
+<a href="#demo" id="demo" style="color: inherit; text-decoration: none;">
+  <h2>Demo</h2>
+</a>
+<p><a href="https://codepen.io/acerix/pen/MWEwBXd">CodePen Demo</a></p>
+
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h2>Install</h2>
+</a>
+<pre><code class="language-bash"><span class="hl-0">yarn add beepody</span>
+</code></pre>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+
+<a href="#build-system" id="build-system" style="color: inherit; text-decoration: none;">
+  <h3>Build System</h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> {</span><span class="hl-2">Beep</span><span class="hl-0">} </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;beepody&#39;</span><br/><br/><span class="hl-4">// Each line is space separated: frequency (Hz), length (ms), repeats</span><br/><span class="hl-4">// Default values: &quot;440 200 1&quot;</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">beep</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-7">Beep</span><span class="hl-0">(</span><span class="hl-3">`</span><br/><span class="hl-3">392     250     4</span><br/><span class="hl-3">466.2   250 </span><br/><span class="hl-3">261.6   250 </span><br/><span class="hl-3">392     250     4</span><br/><span class="hl-3">349.2   250 </span><br/><span class="hl-3">370     250 </span><br/><span class="hl-3">392     250 </span><br/><span class="hl-3">10      500</span><br/><span class="hl-3">392     250 </span><br/><span class="hl-3">392     500 </span><br/><span class="hl-3">392     250     2</span><br/><span class="hl-3">466.2   250 </span><br/><span class="hl-3">261.6   250 </span><br/><span class="hl-3">392     250     4</span><br/><span class="hl-3">349.2   250 </span><br/><span class="hl-3">370     250</span><br/><span class="hl-3">392     500 </span><br/><span class="hl-3">10      500</span><br/><span class="hl-3">`</span><span class="hl-0">)</span><br/><br/><span class="hl-2">beep</span><span class="hl-0">.</span><span class="hl-7">play</span><span class="hl-0">()</span>
+</code></pre>
+
+<a href="#node" id="node" style="color: inherit; text-decoration: none;">
+  <h3>Node</h3>
+</a>
+<pre><code class="language-js"><span class="hl-5">const</span><span class="hl-0"> {</span><span class="hl-6">Beep</span><span class="hl-0">} = </span><span class="hl-7">require</span><span class="hl-0">(</span><span class="hl-3">&#39;beepody&#39;</span><span class="hl-0">)</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">beep</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-7">Beep</span><span class="hl-0">(</span><span class="hl-3">&#39;play 600 988 1 1319 4&#39;</span><span class="hl-0">)</span><br/><span class="hl-2">beep</span><span class="hl-0">.</span><span class="hl-2">toBeepCommand</span>
+</code></pre>
+
+<a href="#script-tags" id="script-tags" style="color: inherit; text-decoration: none;">
+  <h3>Script Tags</h3>
+</a>
+<pre><code class="language-html"><span class="hl-8">&lt;</span><span class="hl-9">script</span><span class="hl-10"> </span><span class="hl-11">src</span><span class="hl-10">=</span><span class="hl-12">&quot;https://unpkg.com/beepody&quot;</span><span class="hl-8">&gt;&lt;/</span><span class="hl-9">script</span><span class="hl-8">&gt;</span><br/><span class="hl-8">&lt;</span><span class="hl-9">button</span><span class="hl-0"> </span><span class="hl-11">onClick</span><span class="hl-0">=</span><span class="hl-12">&quot;beepody.playDefaultBeep()&quot;</span><span class="hl-8">&gt;</span><span class="hl-0">beep</span><span class="hl-8">&lt;/</span><span class="hl-9">button</span><span class="hl-8">&gt;</span>
+</code></pre>
+<p><a href="https://codepen.io/acerix/pen/MWEwBXd">CodePen Demo</a></p>
+
+<a href="#command-line-interface" id="command-line-interface" style="color: inherit; text-decoration: none;">
+  <h3>Command Line Interface</h3>
+</a>
+<pre><code class="language-shellscript"><span class="hl-0">$ beepody </span><span class="hl-3">&quot;392 250 4&quot;</span><br/><span class="hl-0">(beeps?)</span><br/><br/><span class="hl-0">$ beepody</span><br/><span class="hl-0">beepody&gt; 392 250 4</span><br/><span class="hl-0">(beeps?)</span>
+</code></pre>
+
+<a href="#in-your-browser" id="in-your-browser" style="color: inherit; text-decoration: none;">
+  <h4>In Your Browser</h4>
+</a>
+<p><a href="https://npm.runkit.com/beepody">Try with RunKit</a></p>
+
+<a href="#read-the-docs" id="read-the-docs" style="color: inherit; text-decoration: none;">
+  <h2>Read the Docs</h2>
+</a>
+<p><a href="https://beepody.github.io/beepody/">Documentation</a></p>
+
+<a href="#cli-commands" id="cli-commands" style="color: inherit; text-decoration: none;">
+  <h2>CLI Commands</h2>
+</a>
+<ul>
+<li><code>yarn install</code>: Install dependencies</li>
+<li><code>yarn dev</code>: Run tests when source files are changed</li>
+<li><code>yarn lint --fix</code>: Lint with ESLint</li>
+<li><code>yarn test</code>: Run Jest and Enzyme tests</li>
+<li><code>yarn doc</code>: Build documentation</li>
+<li><code>yarn build</code>: Production build</li>
+<li><code>yarn prepublish</code>: Prepare for publishing</li>
+<li><code>yarn publish</code>: Publish to npm</li>
+</ul>
+
+<a href="#feedback" id="feedback" style="color: inherit; text-decoration: none;">
+  <h2>Feedback</h2>
+</a>
+<ul>
+<li>Report bug and feature requests as <a href="https://github.com/Beepody/beepody/issues">GitHub Issues</a></li>
+</ul>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/Beep.html" class="tsd-kind-icon">Beep</a></li><li class="tsd-kind-class"><a href="classes/BeepSequence.html" class="tsd-kind-icon">Beep<wbr/>Sequence</a></li><li class="tsd-kind-class"><a href="classes/default.html" class="tsd-kind-icon">default</a></li><li class="tsd-kind-variable"><a href="modules.html#version" class="tsd-kind-icon">version</a></li><li class="tsd-kind-function"><a href="modules.html#parseBeepCommand" class="tsd-kind-icon">parse<wbr/>Beep<wbr/>Command</a></li><li class="tsd-kind-function"><a href="modules.html#parseBeepHash" class="tsd-kind-icon">parse<wbr/>Beep<wbr/>Hash</a></li><li class="tsd-kind-function"><a href="modules.html#parseGRUBInitTune" class="tsd-kind-icon">parseGRUBInit<wbr/>Tune</a></li><li class="tsd-kind-function"><a href="modules.html#playBeepSequence" class="tsd-kind-icon">play<wbr/>Beep<wbr/>Sequence</a></li><li class="tsd-kind-function"><a href="modules.html#playDefaultBeep" class="tsd-kind-icon">play<wbr/>Default<wbr/>Beep</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
