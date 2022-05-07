@@ -93,7 +93,7 @@ beepody> 392 250 4
 *   `yarn install`: Install dependencies
 *   `yarn dev`: Run tests when source files are changed
 *   `yarn lint --fix`: Lint with ESLint
-*   `yarn test`: Run Jest and Enzyme tests
+*   `yarn test`: Run Jest tests
 *   `yarn doc`: Build documentation
 *   `yarn build`: Production build
 *   `yarn prepublish`: Prepare for publishing

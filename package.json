@@ -68,6 +68,6 @@
     "x-prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
     "build": "rollup --config ./rollup.config.js",
     "prepublish": "yarn x-prebuild && yarn doc && yarn lint && yarn test --coverage && yarn build",
-    "example": "node example.js"
+    "demo": "node demo.js"
   }
 }
