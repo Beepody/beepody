@@ -1,0 +1,28 @@
+#
+# Builds docs and deploy to GitHub pages
+#
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_pages:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - run: yarn install
+    - run: yarn doc
+
+    - run: touch docs/.nojekyll
+    - name: Deploy docs 🚀
+      uses: JamesIves/github-pages-deploy-action@4.3.3
+      with:
+        BRANCH: gh-pages
+        FOLDER: docs
