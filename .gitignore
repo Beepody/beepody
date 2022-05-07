@@ -29,8 +29,8 @@ pnpmfile.js
 *.log
 *.log.*
 
-# Builds
-coverage/
-dist/
+# Generated docs, bundles and type definitions.
 docs/
+dist/
 types/
+coverage/
