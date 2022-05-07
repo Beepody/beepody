@@ -67,7 +67,7 @@
     "lint": "eslint \"*/**/*.{ts,js,json}\"",
     "x-prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
     "build": "rollup --config ./rollup.config.js",
-    "prepublish": "yarn doc && yarn lint && yarn test --coverage && yarn build",
+    "prepublish": "yarn x-prebuild && yarn doc && yarn lint && yarn test --coverage && yarn build",
     "example": "node example.js"
   }
 }
