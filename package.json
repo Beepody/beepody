@@ -1,6 +1,6 @@
 {
   "name": "beepody",
-  "version": "0.3.3",
+  "version": "0.3.33333",
   "description": "Beep melody utilities.",
   "license": "GPL-3.0",
   "keywords": [
@@ -29,7 +29,6 @@
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.min.js",
   "cdn": "dist/index.umd.min.js",
-  "x-unpkg": "dist/index.umd.min.js",
   "jsdelivr": "dist/index.umd.min.js",
   "umd:main": "dist/index.umd.min.js",
   "exports": {
@@ -40,9 +39,6 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
   "bin": {
     "beepody": "./dist/cli.js"
   },
