@@ -39,7 +39,7 @@
       },
       "./dist/index.js"
     ],
-    "./*": "./dist/*.js"
+    "./*": "./dist/*"
   },
   "devDependencies": {
     "@types/eslint": "^8.4.1",
