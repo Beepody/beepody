@@ -1,6 +1,6 @@
 {
   "name": "beepody",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Beep melody utilities.",
   "license": "GPL-3.0",
   "keywords": [
@@ -37,8 +37,9 @@
         "require": "./dist/index.cjs",
         "default": "./dist/index.js"
       },
-      "./dist/index.*"
-    ]
+      "./dist/index.js"
+    ],
+    "./*": "./dist/*.js"
   },
   "devDependencies": {
     "@types/eslint": "^8.4.1",
