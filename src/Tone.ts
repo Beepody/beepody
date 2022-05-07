@@ -1,4 +1,3 @@
-
 /**
  * @class Tone player
  * @name Tone
@@ -7,20 +6,22 @@ export class Tone {
   ctx: AudioContext
   gainNode: GainNode
   outNode: AudioDestinationNode
-  
+
   /**
    * Initialize a tone beeper.
    */
   /* istanbul ignore next */
   constructor() {
-    if (typeof window !== 'undefined' && typeof window.AudioContext !== 'undefined') {
+    if (
+      typeof window !== 'undefined' &&
+      typeof window.AudioContext !== 'undefined'
+    ) {
       this.ctx = new window.AudioContext()
       this.gainNode = this.ctx.createGain()
-      this.gainNode.gain.value = 1/8
+      this.gainNode.gain.value = 1 / 8
       this.outNode = this.ctx.destination
       this.gainNode.connect(this.outNode)
-    }
-    else {
+    } else {
       throw 'AudioContext is required'
     }
   }
@@ -37,7 +38,6 @@ export class Tone {
     osc.start(wait)
     osc.stop(wait + length)
   }
-  
 }
 
 export default Tone

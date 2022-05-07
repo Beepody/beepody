@@ -1,4 +1,9 @@
-import {DEFAULT_LENGTH, DEFAULT_FREQUENCY, NOTE_DELIMITER, PARAMETER_DELIMITER} from './config'
+import {
+  DEFAULT_LENGTH,
+  DEFAULT_FREQUENCY,
+  NOTE_DELIMITER,
+  PARAMETER_DELIMITER,
+} from './config'
 import Tone from './Tone'
 
 /**
@@ -13,7 +18,11 @@ export class Beep {
   /**
    * Initialize a beep.
    */
-  constructor(frequency: number=DEFAULT_FREQUENCY, length: number=DEFAULT_LENGTH, repeats=1) {
+  constructor(
+    frequency: number = DEFAULT_FREQUENCY,
+    length: number = DEFAULT_LENGTH,
+    repeats = 1,
+  ) {
     this.frequency = frequency
     this.length = length
     this.repeats = repeats
@@ -25,7 +34,6 @@ export class Beep {
   toString(): string {
     return `Beep(${this.frequency} ${this.length} ${this.repeats})`
   }
-
 }
 
 /**
@@ -79,7 +87,7 @@ export class BeepSequence {
     const notes: string[] = []
     let s = `play ${this.tempo}`
     for (const beep of this.beeps) {
-      notes.push(`${beep.frequency} ${beep.length/100}`)
+      notes.push(`${beep.frequency} ${beep.length / 100}`)
     }
     if (notes.length) s += ` ${notes.join(' ')}`
     return s
@@ -98,13 +106,12 @@ export class BeepSequence {
   lengthInSeconds(): number {
     let s = 0
     for (const beep of this.beeps) {
-      for (let r=-1; r<beep.repeats; r++) {
+      for (let r = -1; r < beep.repeats; r++) {
         s += beep.length
       }
     }
-    return s * .001
+    return s * 0.001
   }
-
 }
 
 /**
@@ -116,7 +123,7 @@ export const playBeepSequence = (bs: BeepSequence): void => {
   let wait = 0
   const tone = new Tone()
   for (const beep of bs.beeps) {
-    const seconds = beep.length * .001
+    const seconds = beep.length * 0.001
     tone.beepOnBeepOff(beep.frequency, seconds, wait)
     wait += seconds
   }
@@ -136,9 +143,7 @@ const BEEP_OPTIONS = [
   ['d', 'delay', 'DELAY'],
 ]
 
-const BEEP_COMMANDS = [
-  ['n', 'new', 'NEW'],
-]
+const BEEP_COMMANDS = [['n', 'new', 'NEW']]
 
 /**
  * Parse a Linux "beep" command.
@@ -150,23 +155,23 @@ export const parseBeepCommand = (s: string): BeepSequence => {
   let beep = new Beep()
   const processOption = (name: string, value: string): void => {
     switch (name) {
-    case 'frequency':
-      beep.frequency = parseFloat(value)
-      break
-    case 'length':
-      beep.length = parseFloat(value)
-      break
-    case 'repeats':
-      beep.repeats = parseInt(value, 10)
-      break
+      case 'frequency':
+        beep.frequency = parseFloat(value)
+        break
+      case 'length':
+        beep.length = parseFloat(value)
+        break
+      case 'repeats':
+        beep.repeats = parseInt(value, 10)
+        break
     }
   }
   const processCommand = (name: string): void => {
     switch (name) {
-    case 'new':
-      sequence.beeps.push(beep)
-      beep = new Beep()
-      break
+      case 'new':
+        sequence.beeps.push(beep)
+        beep = new Beep()
+        break
     }
   }
   let option
@@ -185,8 +190,7 @@ export const parseBeepCommand = (s: string): BeepSequence => {
             processCommand(opt[1])
           }
         }
-      }
-      else {
+      } else {
         // # eg: -f
         const letter = arg[1]
         for (const opt of BEEP_OPTIONS) {
@@ -195,13 +199,12 @@ export const parseBeepCommand = (s: string): BeepSequence => {
           }
         }
         for (const opt of BEEP_COMMANDS) {
-          if (opt[0] === letter) {
+          if (opt[0] === letter && typeof opt[1] === 'string') {
             processCommand(opt[1])
           }
         }
       }
-    }
-    else {
+    } else {
       if (option) {
         processOption(option, arg)
       }
@@ -218,7 +221,7 @@ export const parseGRUBInitTune = (s: string): BeepSequence => {
   const sequence = new BeepSequence([])
   const args = s.split(/\s+/)
   console.assert(args.shift() === 'play')
-  sequence.tempo = parseFloat(args.shift()||'60')
+  sequence.tempo = parseFloat(args.shift() || '60')
   let pitch
   for (const arg of args) {
     if (pitch) {
@@ -228,8 +231,7 @@ export const parseGRUBInitTune = (s: string): BeepSequence => {
       beep.length = duration
       sequence.beeps.push(beep)
       pitch = null
-    }
-    else {
+    } else {
       pitch = parseFloat(arg)
     }
   }
@@ -242,7 +244,9 @@ export const parseGRUBInitTune = (s: string): BeepSequence => {
 export const parseBeepHash = (s: string): BeepSequence => {
   const sequence = new BeepSequence([])
   for (const note of s.split(NOTE_DELIMITER)) {
-    const params = note.split(PARAMETER_DELIMITER).map((s: string) => parseFloat(s))
+    const params = note
+      .split(PARAMETER_DELIMITER)
+      .map((s: string) => parseFloat(s))
     const beep = new Beep(...params)
     sequence.beeps.push(beep)
   }

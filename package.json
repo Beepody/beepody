@@ -1,20 +1,7 @@
 {
   "name": "beepody",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Beep melody utilities.",
-  "author": "Dylan Ferris <dylan@psilly.com>",
-  "contributors": [
-    {
-      "name": "Dylan Ferris",
-      "email": "dylan@psilly.com",
-      "uri": "https://beepody.com/"
-    }
-  ],
-  "homepage": "https://github.com/Beepody/beepody#readme",
-  "repository": "https://github.com/Beepody/beepody",
-  "bugs": {
-    "url": "https://github.com/Beepody/beepody/issues"
-  },
   "license": "GPL-3.0",
   "keywords": [
     "beep",
@@ -23,46 +10,64 @@
     "init",
     "tune"
   ],
-  "main": "./dist/tsc/main.js",
-  "types": "./dist/tsc/main.d.ts",
-  "browser": "./dist/esbuild/browser.js",
-  "bin": {
-    "beepody": "./dist/esbuild/cli.js"
+  "author": {
+    "name": "Dylan Ferris",
+    "email": "dylan@psilly.com",
+    "uri": "https://beepody.com/"
   },
-  "type": "commonjs",
-  "scripts": {
-    "dev": "yarn test --watch",
-    "cli": "ts-node src/cli.ts",
-    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
-    "test": "jest",
-    "example": "node example.js",
-    "clean": "rm -rf dist build package",
-    "ts-node": "ts-node",
-    "docs": "typedoc --entryPoints src/beepody.ts",
-    "build": "tsc -p tsconfig.json",
-    "build-all": "yarn build && yarn esbuild-node && yarn esbuild-browser",
-    "esbuild-browser": "esbuild src/browser.ts --bundle --minify --sourcemap=external --outfile=dist/esbuild/browser.js",
-    "esbuild-browser:dev": "esbuild src/browser.ts --bundle --outfile=dist/esbuild/browser.js",
-    "esbuild-browser:watch": "esbuild src/browser.ts --bundle --watch --outfile=dist/esbuild/browser.js",
-    "esbuild-node": "esbuild src/cli.ts --bundle --platform=node --minify --sourcemap=external --outfile=dist/esbuild/cli.js",
-    "esbuild-node:dev": "esbuild src/cli.ts --bundle --sourcemap=external --outfile=dist/esbuild/cli.js",
-    "esbuild-node:watch": "esbuild src/cli.ts --bundle --watch --sourcemap=external --outfile=dist/esbuild/cli.js",
-    "prepublish": "yarn lint && yarn test --coverage && yarn clean && yarn build-all && yarn docs"
+  "homepage": "https://github.com/Beepody/beepody#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beepody/beepody.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Beepody/beepody/issues"
+  },
+  "cdn": "dist/index.umd.js",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "jsdelivr": "dist/index.umd.js",
+  "umd:main": "dist/index.umd.js",
+  "exports": {
+    ".": [
+      {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs",
+        "default": "./dist/index.js"
+      },
+      "./dist/index.js"
+    ]
   },
   "devDependencies": {
-    "@types/jest": "*",
-    "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
-    "esbuild": "*",
-    "eslint": "*",
-    "jest": "*",
-    "ts-jest": "*",
-    "ts-node": "*",
-    "typedoc": "*",
-    "typescript": "*"
+    "@types/eslint": "^8.4.1",
+    "@types/jest": "^27.4.1",
+    "@types/prettier": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "rollup": "^2.70.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "ts-jest": "^27.1.4",
+    "ts-jest-resolver": "^2.0.0",
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-markdown": "^3.12.1",
+    "typescript": "^4.6.3"
   },
-  "dependencies": {
-    "tslib": "*"
+  "scripts": {
+    "doc": "typedoc src/index.ts",
+    "test": "jest",
+    "dev": "yarn test --watch",
+    "lint": "eslint \"*/**/*.{ts,js,json}\"",
+    "prebuild": "echo -e \"export default '`node -p \"require('./package.json').version\"`'\" > src/version.ts",
+    "build": "rollup --config ./rollup.config.js",
+    "prepublish": "yarn doc && yarn lint && yarn test --coverage && yarn build",
+    "example": "node example.js"
   }
 }

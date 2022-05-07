@@ -1,4 +1,10 @@
-import Beep, {BeepSequence, parseBeepCommand, parseBeepHash, parseGRUBInitTune} from './Beep'
+import Beep, {
+  BeepSequence,
+  parseBeepCommand,
+  parseBeepHash,
+  parseGRUBInitTune,
+  playDefaultBeep,
+} from './Beep'
 
 test('New Beep is the expected type', () => {
   const a = new Beep()
@@ -7,14 +13,11 @@ test('New Beep is the expected type', () => {
 })
 
 test('Beep 2 string', () => {
-  expect((new Beep()).toString()).toBe('Beep(440 200 1)')
+  expect(new Beep().toString()).toBe('Beep(440 200 1)')
 })
 
 test('Format a beep command', () => {
-  const bs = new BeepSequence([
-    new Beep(988, 100),
-    new Beep(1319, 400)
-  ])
+  const bs = new BeepSequence([new Beep(988, 100), new Beep(1319, 400)])
   expect(bs.toBeepCommand()).toBe('beep -f 988 -l 100 -n -f 1319 -l 400')
 })
 
@@ -25,16 +28,16 @@ test('Parse a beep command', () => {
 })
 
 test('Parse a long beep command', () => {
-  const input = 'beep --frequency 392 --length 250 --repeats 4 --new --frequency 100 --length 100 --repeats 3'
+  const input =
+    'beep --frequency 392 --length 250 --repeats 4 --new --frequency 100 --length 100 --repeats 3'
   const a = parseBeepCommand(input)
-  expect(a.toBeepCommand()).toBe('beep -f 392 -l 250 -r 4 -n -f 100 -l 100 -r 3')
+  expect(a.toBeepCommand()).toBe(
+    'beep -f 392 -l 250 -r 4 -n -f 100 -l 100 -r 3',
+  )
 })
 
 test('Format a GRUB init tune', () => {
-  const bs = new BeepSequence([
-    new Beep(988, 100),
-    new Beep(1319, 400)
-  ])
+  const bs = new BeepSequence([new Beep(988, 100), new Beep(1319, 400)])
   expect(bs.toGRUBInitTune()).toBe('play 600 988 1 1319 4')
 })
 
@@ -51,10 +54,7 @@ test('Parse an empty GRUB init tune', () => {
 })
 
 test('Hash a beep sequence', () => {
-  const bs = new BeepSequence([
-    new Beep(988, 100),
-    new Beep(1319, 400)
-  ])
+  const bs = new BeepSequence([new Beep(988, 100), new Beep(1319, 400)])
   expect(bs.toHash()).toBe('988^100|1319^400')
 })
 
@@ -65,24 +65,20 @@ test('Parse a beep sequence hash', () => {
 })
 
 test('Beep sequence as string', () => {
-  const bs = new BeepSequence([
-    new Beep(988, 100),
-    new Beep(1319, 400)
-  ])
+  const bs = new BeepSequence([new Beep(988, 100), new Beep(1319, 400)])
   expect(bs.toString()).toBe('BeepSequence(988^100|1319^400)')
 })
 
 test('Beep sequence length in seconds', () => {
-  const bs = new BeepSequence([
-    new Beep(988, 100),
-    new Beep(1319, 400)
-  ])
+  const bs = new BeepSequence([new Beep(988, 100), new Beep(1319, 400)])
   expect(bs.lengthInSeconds()).toBe(1)
 })
 
 test('Beep sequence as GRUB tune returns frequency like "9.87", not "9.870000000000001"', () => {
-  const bs = new BeepSequence([
-    new Beep(55, 987)
-  ])
+  const bs = new BeepSequence([new Beep(55, 987)])
   expect(bs.toGRUBInitTune()).toBe('play 600 55 9.87')
+})
+
+test('Play default beep', () => {
+  expect(playDefaultBeep()).toBeUndefined()
 })

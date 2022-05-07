@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>beepody Browser Test</title>
-    <script src="./dist/esbuild/browser.js"></script>
+    <title>Beepody Browser Test</title>
+    <script src="./dist/index.umd.min.js"></script>
     <style>
       .output {
         white-space: pre-wrap;
@@ -19,11 +19,14 @@
     <script>
     
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('version').innerText = beepody.version
+      document.getElementById('version').innerText = beepody.VERSION
+      console.log(beepody)
     })
 
+    const Beep = beepody.Beep, BeepSequence = beepody.BeepSequence
+
     const beep = () => {
-      playDefaultBeep()
+      beepody.playDefaultBeep()
     }
 
     const coin = () => {
@@ -31,7 +34,7 @@
         new Beep(988, 100),
         new Beep(1319, 800)
       ])
-      playBeepSequence(seq)
+      beepody.playBeepSequence(seq)
     }
 
     const scale = () => {
@@ -52,7 +55,7 @@
         new Beep(246, 100),
         new Beep(220, 500)
       ])
-      playBeepSequence(seq)
+      beepody.playBeepSequence(seq)
     }
 
     </script>
@@ -63,3 +66,4 @@
 
   </body>
 </html>
+

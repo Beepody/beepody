@@ -1,8 +1,10 @@
-# beepody - Beep melody utilities.
+# [beepody]
+
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Build Status][build-image]][build-url]
+[![Continuous Integrations][ci-image]][ci-url]
 [![Build Size][size-image]][size-url]
 [![Code Coverage][coverage-image]][coverage-url]
 [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]
@@ -14,7 +16,6 @@ Beep melody utilities for JavaScript.
 ## Demo
 
 [CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
-
 
 ## Install
 
@@ -66,8 +67,8 @@ beep.toBeepCommand
 ### Script Tags
 
 ```html
-<script src="//unpkg.com/beepody"></script>
-<button onClick="playDefaultBeep()">beep</button>
+<script src="https://unpkg.com/beepody"></script>
+<button onClick="beepody.playDefaultBeep()">beep</button>
 ```
 
 [CodePen Demo](https://codepen.io/acerix/pen/MWEwBXd)
@@ -95,13 +96,10 @@ beepody> 392 250 4
 
 *   `yarn install`: Install dependencies
 *   `yarn dev`: Run tests when source files are changed
-*   `yarn cli`: Start a command line interface
-*   `yarn lint`: Lint with ESLint
+*   `yarn lint --fix`: Lint with ESLint
 *   `yarn test`: Run Jest and Enzyme tests
-*   `yarn clean`: Delete previous build
-*   `yarn docs`: Build documentation
+*   `yarn doc`: Build documentation
 *   `yarn build`: Production build
-*   `yarn build-all`: Production build all the things
 *   `yarn prepublish`: Prepare for publishing
 *   `yarn publish`: Publish to npm
 
@@ -115,6 +113,8 @@ beepody> 392 250 4
 [downloads-url]: https://npmjs.org/package/beepody
 [build-image]: https://github.com/Beepody/beepody/workflows/Test/badge.svg
 [build-url]: https://github.com/Beepody/beepody/actions?query=workflow%2ATest
+[ci-image]: https://github.com/Beepody/beepody/actions/workflows/continuous-integrations.yaml/badge.svg?branch=main
+[ci-url]: https://github.com/Beepody/beepody/actions/workflows/continuous-integrations.yaml
 [size-image]: https://badgen.net/bundlephobia/min/beepody
 [size-url]: https://bundlephobia.com/result?p=beepody
 [coverage-image]: https://scrutinizer-ci.com/g/Beepody/beepody/badges/coverage.png?b=main
