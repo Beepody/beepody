@@ -31,13 +31,13 @@
   "jsdelivr": "dist/index.umd.js",
   "umd:main": "dist/index.umd.js",
   "exports": {
+    "./*": "./dist/*",
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "script": "./dist/index.umd.min.js",
       "default": "./dist/index.js"
-    },
-    "./*": "./dist/*"
+    }
   },
   "devDependencies": {
     "@types/eslint": "^8.4.1",
