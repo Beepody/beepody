@@ -69,10 +69,6 @@ beep.toBeepCommand
 <button onClick="beepody.playDefaultBeep()">beep</button>
 ```
 
-#### In Your Browser
-
-[Try with RunKit](https://npm.runkit.com/beepody)
-
 ### Command Line Interface
 
 ```shellscript
@@ -83,6 +79,10 @@ $ beepody
 beepody> 392 250 4
 (beeps?)
 ```
+
+#### CLI in Browser
+
+[RunKit](https://npm.runkit.com/beepody)
 
 ## Read the Docs
 
