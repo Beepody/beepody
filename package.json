@@ -1,6 +1,6 @@
 {
   "name": "beepody",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Beep melody utilities.",
   "license": "GPL-3.0",
   "keywords": [
@@ -31,14 +31,12 @@
   "jsdelivr": "dist/index.umd.js",
   "umd:main": "dist/index.umd.js",
   "exports": {
-    ".": [
-      {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.cjs",
-        "default": "./dist/index.js"
-      },
-      "./dist/index.js"
-    ],
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "script": "./dist/index.umd.min.js",
+      "default": "./dist/index.js"
+    },
     "./*": "./dist/*"
   },
   "devDependencies": {
