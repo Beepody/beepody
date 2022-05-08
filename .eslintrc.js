@@ -14,7 +14,7 @@ const options = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
     project: ['tsconfig.json']
   },
   plugins: ['@typescript-eslint'],
