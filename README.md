@@ -105,7 +105,7 @@ beepody> 392 250 4
 
 ## Sponsorship
 
-* [Sponsor Beepody](https://github.com/sponsors/Beepody)
+* [Sponsor Beepody](https://github.com/sponsors/acerix)
 
 [npm-image]: https://img.shields.io/npm/v/beepody.svg
 [npm-url]: https://npmjs.org/package/beepody

@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/Beepody/beepody/issues"
   },
-  "funding": "https://github.com/sponsors/Beepody",
+  "funding": "https://github.com/sponsors/acerix",
   "main": "dist/index.umd.min.js",
   "types": "types/index.d.ts",
   "module": "dist/index.esm.js",
